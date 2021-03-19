@@ -1,0 +1,10 @@
+C:\Users\oobit\source\repos\4Laba\4Laba\bin\Debug\4Laba.exe.config
+C:\Users\oobit\source\repos\4Laba\4Laba\bin\Debug\4Laba.exe
+C:\Users\oobit\source\repos\4Laba\4Laba\bin\Debug\4Laba.pdb
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\4Laba.csprojAssemblyReference.cache
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\_4Laba.Form1.resources
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\_4Laba.Properties.Resources.resources
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\4Laba.csproj.GenerateResource.cache
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\4Laba.csproj.CoreCompileInputs.cache
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\4Laba.exe
+C:\Users\oobit\source\repos\4Laba\4Laba\obj\Debug\4Laba.pdb
