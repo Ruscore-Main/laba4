@@ -11,6 +11,7 @@ namespace _4Laba
     {
         public string name;
         public PointF[] points;
+        public Pen pen;
         public Polygon(string name)
         {
             this.name = name;
@@ -18,7 +19,7 @@ namespace _4Laba
         public Polygon(string name, PointF[] points)
         {
             this.name = name;
-
+            this.pen = new Pen(Color.Red, 4);
             this.points = new PointF[points.Length];
             for (int i = 0; i < points.Length; i++)
             {
@@ -29,7 +30,7 @@ namespace _4Laba
         public void Draw(Bitmap bitmap, PictureBox pictureBox)
         {
             Graphics g = Graphics.FromImage(bitmap);
-            g.DrawPolygon(new Pen(Color.Red, 4), points);
+            g.DrawPolygon(this.pen, points);
             pictureBox.Image = bitmap;
         }
        

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace _4Laba
 {
+
+    // (1+2)*3 ===== 12+3*
     public partial class Form1 : Form
     {
         bool openedHistory = false;
@@ -20,6 +22,7 @@ namespace _4Laba
         List<PointsS> namesA = new List<PointsS>();
         List<Polygon> names = new List<Polygon>();
         Bitmap bitmap;
+        Pen[] pens = new Pen[3] { new Pen(Color.Red, 4), new Pen(Color.Green, 4), new Pen(Color.Aqua, 4) };
         public void Clear()
         {
             Graphics g = Graphics.FromImage(bitmap);
@@ -28,7 +31,7 @@ namespace _4Laba
         }
         private bool IsOperation(char item)
         {
-            return (item == 'A' || item == 'M' || item == 'P' || item == 'D');
+            return (item == 'A' || item == 'M' || item == 'P' || item == 'D' || item == 'C');
         }
 
         private void AddPoints(string name, int n, Stack<string> numbers)
@@ -54,7 +57,7 @@ namespace _4Laba
                     Polygon pol = new Polygon(name, pointss.points);
                     names.Add(pol);
                     pol.Draw(bitmap, pictureBox1);
-                    richTextBox1.Text += $"C({name},{nameA}) - Многоугольник был отрисован\n";
+                    richTextBox1.Text += $"P({name},{nameA}) - Многоугольник был отрисован\n";
                 }
             }
         }
@@ -110,6 +113,30 @@ namespace _4Laba
                 richTextBox1.Text += $"D({name}) - Многоугольник был удален\n";
             }
             
+        }
+
+        private void ChangeColor(string name, int color)
+        {
+
+            Pen pen = pens[color];
+            bool inList = false;
+            Polygon copyPol = null;
+            foreach (Polygon pol in names)
+            {
+                if (pol.name == name)
+                {
+                    inList = true;
+                    copyPol = pol;
+                }
+            }
+            if (inList)
+            {
+                DeletePolygon(copyPol.name);
+                copyPol.pen = pen;
+                names.Add(copyPol);
+                copyPol.Draw(bitmap, pictureBox1);
+                richTextBox1.Text += $"C({name},{color}) - Многоугольник был перекрашен\n";
+            }
         }
 
         public Form1()
@@ -170,6 +197,22 @@ namespace _4Laba
                             name = inputItems[0];
                             int dx = Convert.ToInt32(inputItems[1]), dy = Convert.ToInt32(inputItems[2]);
                             MoveTo(name, dx, dy);
+                        }
+                        if (type == 'C')
+                        {
+                            string[] inputItems = inputString.Split(' ');
+                            name = inputItems[0];
+                            int color = Convert.ToInt32(inputItems[1]);
+                            MessageBox.Show(Convert.ToString(color));
+                            if (color >= 0 && color < 3)
+                            {
+                                ChangeColor(name, color);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Не существует такого цвета");
+                            }
+
                         }
                         textBoxInputString.Text = "";
                     }
